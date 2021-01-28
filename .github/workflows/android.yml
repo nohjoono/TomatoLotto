@@ -24,9 +24,9 @@ jobs:
       run: ls -al
       
     - name: Change wrapper permissions
-      run: chmod +x ./gradlew
+      run: chmod +x ./android/gradlew
 
-    - run: ./gradlew assembleDebug -Dorg.gradle.logging.level=info
+    - run: ./android/gradlew assembleDebug -Dorg.gradle.logging.level=info
       working-directory: android
       name: Build Android apk (debug)
 
