@@ -16,6 +16,9 @@ jobs:
 
     - name: Install JS dependencies
       run: yarn install
+      
+    - name: Change wrapper permissions
+      run: chmod +x ./gradlew
 
     - run: ./gradlew assembleDebug -Dorg.gradle.logging.level=info
       working-directory: android
