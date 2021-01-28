@@ -20,6 +20,9 @@ jobs:
     - name: Change Directory
       run: cd ./android
       
+    - name: Display Directory
+      run: ls -al
+      
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
 
