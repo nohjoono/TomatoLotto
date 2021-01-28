@@ -12,6 +12,10 @@ jobs:
       with:
         node-version: 14.x
 
+    - uses: c-hive/gha-yarn-cache@v1
+
+    - name: Install JS dependencies
+      run: yarn install
 
     - run: ./gradlew assembleDebug -Dorg.gradle.logging.level=info
       working-directory: android
