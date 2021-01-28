@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js v14
@@ -17,9 +17,7 @@ jobs:
     - name: Install JS dependencies
       run: yarn install
       
-    - name: Change wrapper permissions
-      run: chmod +x ./android/gradlew
-      
+     
     - name: Build Android apk (debug)
       working-directory: android
       run: ./android/gradlew assembleDebug -Dorg.gradle.logging.level=info
