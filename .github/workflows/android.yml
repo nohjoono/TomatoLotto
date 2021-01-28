@@ -16,19 +16,13 @@ jobs:
 
     - name: Install JS dependencies
       run: yarn install
-    
-    - name: Change Directory
-      run: cd ./android
-      
-    - name: Display Directory
-      run: ls -al
       
     - name: Change wrapper permissions
       run: chmod +x ./android/gradlew
-
-    - run: ./android/gradlew assembleDebug -Dorg.gradle.logging.level=info
+      
+    - name: Build Android apk (debug)
       working-directory: android
-      name: Build Android apk (debug)
+      run: ./android/gradlew assembleDebug -Dorg.gradle.logging.level=info
 
     - uses: actions/upload-artifact@v2
       with:
