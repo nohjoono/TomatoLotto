@@ -15,7 +15,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { WebView } from 'react-native-webview';
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
-import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob';
+
+import Animated from 'react-native-reanimated';
+import BottomSheet from 'reanimated-bottom-sheet';
 
 
 const SCREEN_HEIGHT = Dimensions.get('screen').height;
@@ -47,17 +49,17 @@ function Home({ navigation }) {
 
     const [url, setUrl] = useState(null);
 
-    // useEffect(() => {
-    //     const changeNavStyle = async () => {
-    //         try {
-    //             const response = await changeNavigationBarColor('transparent');
-    //             //const response = await changeNavigationBarColor('#FFFFFF');
-    //         } catch (e) {
-    //             console.log(e)// {success: false}
-    //         }
-    //     }
-    //     changeNavStyle();
-    // }, [])
+    useEffect(() => {
+        const changeNavStyle = async () => {
+            try {
+                const response = await changeNavigationBarColor('transparent');
+                //const response = await changeNavigationBarColor('#FFFFFF');
+            } catch (e) {
+                console.log(e)// {success: false}
+            }
+        }
+        changeNavStyle();
+    }, [])
 
 
     function onBarCodeRead(result) {
@@ -82,17 +84,17 @@ function Home({ navigation }) {
         <View
             style={{
                 backgroundColor: 'white',
-                height: 600,
-                zIndex: 1
+                padding: 16,
+                height: 450,
             }}
         >
-            <WebView source={{ uri: url }} style={{ marginTop: -124 }} scrollEnabled={false} />
+            <Text>Swipe down to close</Text>
         </View>
     );
 
 
     return (
-        <View style={styles.container}>
+        <>
             <RNCamera
                 ref={cameraRef}
                 rectOfInterest={{
@@ -105,7 +107,7 @@ function Home({ navigation }) {
                     width: SCREEN_WIDTH,
                     height: SCREEN_HEIGHT,
                 }}
-                style={{ height: SCREEN_HEIGHT - 90}}
+                style={{ height: SCREEN_HEIGHT }}
                 captureAudio={false}
                 type={RNCamera.Constants.Type.back}
                 flashMode={RNCamera.Constants.FlashMode.off}
@@ -142,15 +144,20 @@ function Home({ navigation }) {
                 </View>
 
                 {/* result */}
-                <View style={styles.bottomContainer}>
-                    {url ?
-                        <WebView source={{ uri: url }} style={{ marginTop: -124 }} />
-                        : undefined
-                    }
-                </View>
+                {/* <View style={styles.bottomContainer}>
+                {url ?
+                    <WebView source={{ uri: url }} style={{ marginTop: -124 }} />
+                    : undefined
+                }
+            </View> */}
             </RNCamera>
-            <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.ADAPTIVE_BANNER}/>
-        </View>
+            <BottomSheet
+                ref={sheetRef}
+                snapPoints={[450, 300, 0]}
+                borderRadius={10}
+                renderContent={renderContent}
+            />
+        </>
     )
 }
 
@@ -188,10 +195,10 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         //backgroundColor: '#ecf0f1',
         //backgroundColor: 'rgba(255, 255, 255, 0.5)'
-        borderTopLeftRadius: 16,
-        borderTopRightRadius: 16,
-        //borderBottomLeftRadius: 32,
-        // borderBottomRightRadius: 32,
+        borderTopLeftRadius: 32,
+        borderTopRightRadius: 32,
+        borderBottomLeftRadius: 32,
+        borderBottomRightRadius: 32,
         //borderTopRightRadius: 24,
     },
 });

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "888519702435",
+    "project_id": "tomatolotto-c679c",
+    "storage_bucket": "tomatolotto-c679c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888519702435:android:a3a410d418a7047dd80c16",
+        "android_client_info": {
+          "package_name": "com.tomatolotto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888519702435-b1bf466ojievk3hcnl6vcji246041dep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLpiauxM7IpAV8BXs8VxP97enZpSfgtU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888519702435-b1bf466ojievk3hcnl6vcji246041dep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

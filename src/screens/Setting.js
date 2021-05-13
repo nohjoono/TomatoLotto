@@ -8,7 +8,7 @@ import { WebView } from 'react-native-webview';
 
 function Manual({ navigation }) {
     return (
-        <WebView source={{ uri: 'https://reactnative.dev/' }} />
+        <WebView source={{ uri: 'https://www.naver.com' }} />
     )
 }
 
